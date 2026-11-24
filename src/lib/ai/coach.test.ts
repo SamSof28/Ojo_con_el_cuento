@@ -11,7 +11,6 @@ if (!caseRecord) {
 }
 
 const request: CoachRequest = {
-  adultConfirmed: true,
   caseId: caseRecord.id,
   selectedSignals: { P: false, A: true, R: false, E: false },
   selectedAction: "proceed",

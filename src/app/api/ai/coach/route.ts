@@ -1,18 +1,26 @@
 import { getCaseById } from "@/content/cases";
 import { coachRequestSchema } from "@/domain/schemas";
-import { createGeminiCoach } from "@/lib/ai/gemini-coach";
 import { getCoachResponse } from "@/lib/ai/coach";
+import { createCoachFromGenerator } from "@/lib/ai/gemini-coach";
+import { getGeminiJsonGenerator } from "@/lib/ai/gemini";
+import { checkAiRequest, readJsonBody } from "@/lib/ai/request-guard";
+
+export const maxDuration = 25;
 
 export async function POST(request: Request) {
-  let body: unknown;
+  const denied = checkAiRequest(request);
 
-  try {
-    body = await request.json();
-  } catch {
-    return Response.json({ error: "El cuerpo debe ser JSON válido." }, { status: 400 });
+  if (denied) {
+    return denied;
   }
 
-  const parsed = coachRequestSchema.safeParse(body);
+  const body = await readJsonBody(request);
+
+  if (!body.ok) {
+    return body.response;
+  }
+
+  const parsed = coachRequestSchema.safeParse(body.body);
 
   if (!parsed.success) {
     return Response.json(
@@ -27,11 +35,8 @@ export async function POST(request: Request) {
     return Response.json({ error: "No encontramos ese caso." }, { status: 404 });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY?.trim();
-  const model = process.env.GEMINI_MODEL?.trim() || "gemini-3.5-flash-lite";
-  const isAiEnabled = process.env.AI_ENABLED !== "false";
-  const coach =
-    isAiEnabled && apiKey ? createGeminiCoach(apiKey, model) : null;
+  const generator = getGeminiJsonGenerator();
+  const coach = generator ? createCoachFromGenerator(generator) : null;
 
   const response = await getCoachResponse(parsed.data, caseRecord, coach);
 

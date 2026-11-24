@@ -6,23 +6,7 @@ afterEach(() => {
 });
 
 describe("POST /api/ai/coach", () => {
-  it("rejects requests without adult confirmation", async () => {
-    const response = await POST(
-      new Request("http://localhost/api/ai/coach", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          caseId: "job-p1",
-          selectedSignals: { P: true, A: true, R: true, E: false },
-          selectedAction: "cut",
-        }),
-      }),
-    );
-
-    expect(response.status).toBe(400);
-  });
-
-  it("returns grounded prepared feedback when AI is disabled", async () => {
+  it("returns grounded prepared feedback without requiring age-gate data", async () => {
     vi.stubEnv("AI_ENABLED", "false");
 
     const response = await POST(
@@ -30,7 +14,6 @@ describe("POST /api/ai/coach", () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          adultConfirmed: true,
           caseId: "job-p1",
           selectedSignals: { P: true, A: true, R: true, E: false },
           selectedAction: "cut",

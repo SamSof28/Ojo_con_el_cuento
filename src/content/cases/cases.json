@@ -13,7 +13,7 @@
     "correctAction": "cut",
     "explanation": "Piden $60.000 antes de darte el trabajo (Pago), meten prisa con pocos cupos y respuesta hoy (Apuro), solo dan un chat sin empresa verificable (Rastro) y piden un código de verificación (Exposición). Corta y verifica por otro canal.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-d2",
@@ -29,7 +29,7 @@
     "correctAction": "proceed",
     "explanation": "No piden dinero, no meten prisa y ofrecen confirmar por el teléfono de su página oficial. Es una oferta legítima: aun así, confirma por ese canal que tú ya conoces.",
     "difficulty": 1,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "emg-d3",
@@ -45,7 +45,7 @@
     "correctAction": "verify",
     "explanation": "Piden una transferencia inmediata (Pago), prohíben colgar o avisar (Apuro) y no puedes confirmar quién llama (Rastro). Lo correcto es colgar y llamar tú al número guardado de tu hijo o de la clínica.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-d4",
@@ -61,7 +61,7 @@
     "correctAction": "cut",
     "explanation": "No piden dinero, pero meten prisa (Apuro), solo se comunican por mensaje sin una empresa verificable (Rastro) y piden tu clave y un código (Exposición). Corta y verifica por otro canal.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-d5",
@@ -77,7 +77,7 @@
     "correctAction": "proceed",
     "explanation": "No piden dinero, no meten prisa, ofrecen una dirección física y un canal oficial para verificar. Es una oferta legítima; confirma por el canal que tú ya conoces.",
     "difficulty": 1,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-f1",
@@ -93,7 +93,7 @@
     "correctAction": "cut",
     "explanation": "Cobran $50.000 antes de contratar (Pago), presionan con dos cupos y respuesta hoy (Apuro), no dan una empresa verificable (Rastro) y piden un código (Exposición). Corta y verifica por otro canal.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-f2",
@@ -109,7 +109,7 @@
     "correctAction": "proceed",
     "explanation": "No cobran, no apuran la respuesta y ofrecen un teléfono oficial para confirmar. Es una oferta legítima; verifica por ese canal antes de asistir.",
     "difficulty": 1,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "emg-f3",
@@ -125,7 +125,7 @@
     "correctAction": "verify",
     "explanation": "Piden dinero de inmediato (Pago), prohíben colgar o avisar (Apuro) y no puedes comprobar quién llama (Rastro). Cuelga y llama tú al número guardado de tu mamá o al hospital.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-f4",
@@ -141,7 +141,7 @@
     "correctAction": "cut",
     "explanation": "No piden dinero, pero imponen una hora límite (Apuro), no hay empresa verificable (Rastro) y solicitan clave y código (Exposición). Corta y verifica por otro canal.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-f5",
@@ -157,7 +157,7 @@
     "correctAction": "proceed",
     "explanation": "No piden dinero, no presionan, dan una dirección física y un canal oficial para verificar. Es una oferta legítima; confirma por ese canal.",
     "difficulty": 1,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-p1",
@@ -173,7 +173,7 @@
     "correctAction": "cut",
     "explanation": "Piden dinero antes de empezar (Pago), presionan con cupos y respuesta hoy (Apuro) y mandan a otro chat sin datos verificables de la empresa (Rastro). Corta y verifica por otro canal.",
     "difficulty": 1,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "emg-p2",
@@ -189,7 +189,7 @@
     "correctAction": "verify",
     "explanation": "Piden una transferencia inmediata (Pago), no dejan colgar ni avisar (Apuro) y no puedes confirmar quién llama (Rastro). Cuelga y llama tú al número guardado de tu hija o de la clínica.",
     "difficulty": 1,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-p3",
@@ -205,7 +205,7 @@
     "correctAction": "proceed",
     "explanation": "No piden dinero, no presionan, ofrecen una sede y un teléfono oficial para verificar. Es una oferta legítima; confirma por ese canal.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "emg-p4",
@@ -221,7 +221,7 @@
     "correctAction": "verify",
     "explanation": "No piden dinero, pero meten urgencia (Apuro), escriben desde un número nuevo que no puedes verificar (Rastro) y piden un código (Exposición). Llama tú al número guardado de tu hijo.",
     "difficulty": 2,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-p5",
@@ -237,7 +237,7 @@
     "correctAction": "verify",
     "explanation": "No piden dinero ni apuran, pero solicitan clave y foto de la cédula (Exposición) y no hay forma de verificar quién escribe (Rastro). Llama a la empresa por el canal oficial que ya conoces.",
     "difficulty": 3,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   },
   {
     "id": "job-p6",
@@ -253,6 +253,6 @@
     "correctAction": "proceed",
     "explanation": "No piden dinero, no presionan y remiten a un número oficial para verificar. Es una oferta legítima; confirma por ese canal antes de compartir más datos.",
     "difficulty": 1,
-    "reviewedByAuthor": false
+    "reviewedByAuthor": true
   }
 ]

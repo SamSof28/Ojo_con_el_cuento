@@ -16,7 +16,7 @@ describe("Home", () => {
     expect(screen.getByText(/Ojo con el/)).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
-        name: "Cuatro letras para hacer una pausa.",
+        name: "Cuatro señales para hacer una pausa.",
       }),
     ).toBeInTheDocument();
   });
@@ -24,12 +24,14 @@ describe("Home", () => {
   it("invita a comenzar el recorrido sin registro", () => {
     render(<Home />);
 
-    const startLinks = screen.getAllByRole("link", { name: "Empezar ahora" });
+    const startLinks = screen.getAllByRole("link", {
+      name: "Empezar el recorrido",
+    });
 
     expect(startLinks.length).toBeGreaterThanOrEqual(1);
     expect(startLinks[0]).toHaveAttribute("href", "/sesion");
     expect(screen.getByText("Sin registro", { selector: "li" })).toBeInTheDocument();
-    expect(screen.getByText(/umbral de dominio es 8 de 10 puntos/)).toBeInTheDocument();
+    expect(screen.getByText(/≈ 15 minutos/)).toBeInTheDocument();
   });
 
   it("aclara que la IA no califica y que todo es ficticio", () => {
@@ -37,10 +39,12 @@ describe("Home", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /El coach de IA explica, pero nunca te califica/,
+        name: /Un tutor que usa el caso, no un chatbot genérico/,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Gemini está conectado al coach/)).toBeInTheDocument();
+    expect(screen.getByText(/El puntaje lo calcula el sistema, nunca la IA/))
+      .toBeInTheDocument();
+    expect(screen.getByText(/Si la IA no responde/)).toBeInTheDocument();
     expect(
       screen.getByText(/Todo es ficticio/, { selector: "strong" }),
     ).toBeInTheDocument();

@@ -30,7 +30,6 @@ export function AiCoachPanel({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          adultConfirmed: true,
           caseId,
           selectedSignals,
           selectedAction,
@@ -59,24 +58,32 @@ export function AiCoachPanel({
   }
 
   return (
-    <section className="ai-panel" aria-labelledby="coach-title">
+    <section
+      className="ai-panel ai-panel--featured"
+      aria-labelledby="coach-title"
+    >
       <div className="ai-panel__header">
         <h2 className="ai-panel__title" id="coach-title">
-          Una segunda mirada
+          El tutor PARE de Gemini
         </h2>
         {data ? (
           <span className="ai-panel__source">
-            {data.source === "ai" ? "Gemini en vivo" : "Respuestas preparadas"}
+            {data.source === "ai"
+              ? "Respuesta de Gemini"
+              : "Explicación preparada"}
           </span>
-        ) : null}
+        ) : (
+          <span className="ai-panel__source">Usa el caso y tu respuesta</span>
+        )}
       </div>
 
-      <p className="text-sm text-muted">
-        El coach te ayuda a pensar qué señal se te pasó. No cambia tu nota.
+      <p className="ai-panel__intro">
+        No te da una nota: contrasta las señales que marcaste con este caso,
+        explica una pista concreta y te deja una pregunta para pensar.
       </p>
 
       <button
-        className="btn btn--secondary btn--small"
+        className="btn btn--primary"
         type="button"
         onClick={askCoach}
         disabled={status === "loading"}
@@ -85,19 +92,23 @@ export function AiCoachPanel({
           ? "Pensando…"
           : status === "done"
             ? "Pedir otra explicación"
-            : "Pedir una explicación al coach"}
+            : status === "error"
+              ? "Intentar conectar de nuevo"
+              : "Pedir retroalimentación a Gemini"}
       </button>
 
       <div aria-live="polite">
         {data ? (
           <div className="mt-3">
             <p>{data.explanation}</p>
-            <p className="ai-panel__hint">{data.nextHint}</p>
+            <p className="ai-panel__hint">
+              <strong>Para pensar:</strong> {data.nextHint}
+            </p>
             <p className="text-sm font-semibold">{data.encouragement}</p>
             {data.source === "fallback" ? (
-              <p className="ai-panel__source">
-                Usando una explicación preparada porque la IA no está
-                disponible ahora.
+              <p className="ai-panel__fallback">
+                Gemini no está disponible ahora. Esta explicación viene del
+                caso revisado.
               </p>
             ) : null}
           </div>
@@ -105,7 +116,7 @@ export function AiCoachPanel({
 
         {error ? (
           <p className="form-error" role="alert">
-            {error}
+            {error} Puedes continuar con la explicación preparada del caso.
           </p>
         ) : null}
       </div>

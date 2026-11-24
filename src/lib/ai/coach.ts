@@ -4,6 +4,7 @@ import {
   type CoachResponse,
 } from "@/domain/schemas";
 import { SIGNALS, type CaseRecord, type Signal } from "@/domain/types";
+import { logGeminiFailure, logGeminiOutputRejected } from "./gemini";
 import type { AiCoach, CoachContext } from "./types";
 
 const UNSAFE_OUTPUT_PATTERN = /https?:\/\/|www\.|\d{7,}/i;
@@ -75,6 +76,9 @@ export async function getCoachResponse(
     selectedSignals: request.selectedSignals,
     selectedAction: request.selectedAction,
   };
+  let lastFailure: unknown;
+  let hadFailure = false;
+  let outputRejected = false;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
     try {
@@ -84,9 +88,19 @@ export async function getCoachResponse(
       if (output) {
         return output;
       }
-    } catch {
-      // Retry once; the prepared explanation is the reliable fallback.
+      outputRejected = true;
+    } catch (error) {
+      lastFailure = error;
+      hadFailure = true;
     }
+  }
+
+  if (hadFailure) {
+    logGeminiFailure(lastFailure);
+  }
+
+  if (outputRejected) {
+    logGeminiOutputRejected();
   }
 
   return buildCoachFallback(caseRecord);

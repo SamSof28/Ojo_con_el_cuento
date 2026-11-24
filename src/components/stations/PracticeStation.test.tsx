@@ -124,15 +124,19 @@ describe("PracticeStation", () => {
     );
 
     expect(
-      screen.getByText("Hablar con el personaje (simulador)", {
+      screen.getByText("Simula una conversación con el personaje", {
         selector: "summary",
       }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Aconseja a un familiar", { selector: "summary" }),
+      screen.getByText("Practica cómo aconsejar a un familiar", {
+        selector: "summary",
+      }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Pedir una explicación al coach" }),
+      screen.getByRole("button", {
+        name: "Pedir retroalimentación a Gemini",
+      }),
     ).toBeInTheDocument();
   });
 });

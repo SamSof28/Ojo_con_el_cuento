@@ -16,6 +16,10 @@ describe("banco de casos", () => {
     expect(new Set(cases.map((caseRecord) => caseRecord.id)).size).toBe(16);
   });
 
+  it("marca los 16 casos como revisados por el autor", () => {
+    expect(cases.every((caseRecord) => caseRecord.reviewedByAuthor)).toBe(true);
+  });
+
   it("respeta la distribución 5 diagnóstico, 5 final y 6 práctica", () => {
     expect(diagnosticCases).toHaveLength(5);
     expect(finalCases).toHaveLength(5);

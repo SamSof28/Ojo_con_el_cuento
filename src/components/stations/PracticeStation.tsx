@@ -54,7 +54,7 @@ export function PracticeStation({
       <StationHeading
         kicker="Estación 3 · Práctica"
         title="Aquí sí puedes equivocarte y volver a intentar."
-        lead="Cada caso te muestra la explicación apenas respondes. Puedes hablar con el personaje y practicar cómo le explicarías el riesgo a alguien de tu familia."
+        lead="Después de responder, compara tu elección con la explicación y pídele al tutor Gemini una retroalimentación basada en el caso. También puedes probar el personaje y aconsejar a alguien de tu familia."
       />
 
       <div className="progress-block">
@@ -89,21 +89,21 @@ export function PracticeStation({
         <div className="feedback-stack" aria-live="polite">
           <FeedbackPanel caseRecord={caseRecord} answer={answer} />
 
-          <details className="details-panel">
-            <summary>Hablar con el personaje (simulador)</summary>
-            <SimulatorPanel caseRecord={caseRecord} />
-          </details>
-
-          <details className="details-panel">
-            <summary>Aconseja a un familiar</summary>
-            <AdvicePanel caseRecord={caseRecord} />
-          </details>
-
           <AiCoachPanel
             caseId={caseRecord.id}
             selectedSignals={answer.selectedSignals}
             selectedAction={answer.selectedAction}
           />
+
+          <details className="details-panel">
+            <summary>Simula una conversación con el personaje</summary>
+            <SimulatorPanel caseRecord={caseRecord} />
+          </details>
+
+          <details className="details-panel">
+            <summary>Practica cómo aconsejar a un familiar</summary>
+            <AdvicePanel caseRecord={caseRecord} />
+          </details>
 
           {score.total < 2 ? (
             <div className="btn-row">

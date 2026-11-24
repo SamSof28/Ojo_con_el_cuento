@@ -11,11 +11,11 @@ Orden pensado para tener **un recorrido completo desplegado antes de integrar la
 - [ ] **T6 · Práctica sin IA.** Feedback con la explicación base y reintento con otro caso. *Aceptación:* un error muestra la explicación y permite reintentar.
 - [ ] **T7 · Prueba final y resultado.** Comparación antes/después por letra, plan de hábitos. *Aceptación:* no se muestran frases de logro si no hay puntaje que las respalde.
 - [ ] **T8 · Despliegue temprano.** Subir a Vercel y probar en ventana privada y celular. *Aceptación:* link público con el recorrido completo funcionando **sin IA**.
-- [x] **T9 · Puerto de IA y coach.** `AiCoach`, adaptador Gemini, respaldo, validación de salida, `/api/ai/coach`. *Aceptación:* pruebas del validador y del respaldo; sin clave sigue funcionando. La ruta exige confirmación de mayoría de edad y mantiene la clave solo en servidor.
-- [ ] **T10 · Simulador.** `/api/ai/recruiter` con historial acotado. *Aceptación:* conversación de hasta 6 turnos y respaldo con guion fijo.
-- [ ] **T11 · Aconseja a un familiar.** `/api/ai/advice`. *Aceptación:* devuelve cobertura PARE; no entra al puntaje.
-- [ ] **T12 · Límites y seguridad.** Límite por IP, tope de longitud, prueba de inyección. *Aceptación:* se documenta el resultado en la checklist.
-- [ ] **T13 · Pulido móvil y accesibilidad.** Lectura en voz alta con el navegador si hay tiempo. *Aceptación:* Lighthouse de accesibilidad sin fallos graves.
+- [x] **T9 · Puerto de IA y coach.** `AiCoach`, adaptador Gemini, respaldo, validación de salida, `/api/ai/coach`. *Aceptación:* pruebas del validador y del respaldo; sin clave sigue funcionando; con clave real devuelve `source: "ai"`. La población objetivo es adulta y la clave se mantiene solo en el servidor. Verificado localmente el 24/11/2026.
+- [x] **T10 · Simulador.** `/api/ai/recruiter` con historial acotado. *Aceptación:* conversación de hasta 6 turnos, respuesta real `source: "ai"` y respaldo con guion fijo. Respuesta real verificada localmente el 24/11/2026.
+- [x] **T11 · Aconseja a un familiar.** `/api/ai/advice`. *Aceptación:* devuelve cobertura PARE con `source: "ai"`; no entra al puntaje. Respuesta real verificada localmente el 24/11/2026.
+- [x] **T12 · Límites y seguridad.** Límite por IP, tope de longitud, prueba de inyección. *Aceptación:* se documenta el resultado en la checklist.
+- [ ] **T13 · Pulido móvil y accesibilidad.** Se resaltó al tutor y se reorganizó la portada mobile first; la lectura en voz alta sigue fuera de alcance. *Aceptación:* revisar contraste, tamaño y navegación por teclado en la verificación final.
 - [ ] **T14 · Revisión final.** Ejecutar `/verificar`, corregir y completar docs/06. *Aceptación:* checklist completa.
 
 ## Secuencia sugerida

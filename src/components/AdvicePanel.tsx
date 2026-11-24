@@ -52,8 +52,13 @@ export function AdvicePanel({ caseRecord }: AdvicePanelProps) {
         adviceResponseSchema,
       );
 
-      setResult(response);
-      setFallback(null);
+      if (response.source === "fallback") {
+        setResult(null);
+        setFallback(buildAdviceFallback(caseRecord));
+      } else {
+        setResult(response);
+        setFallback(null);
+      }
       setStatus("done");
     } catch {
       setResult(null);
@@ -66,7 +71,7 @@ export function AdvicePanel({ caseRecord }: AdvicePanelProps) {
     <section className="ai-panel" aria-labelledby={`advice-title-${caseRecord.id}`}>
       <div className="ai-panel__header">
         <h2 className="ai-panel__title" id={`advice-title-${caseRecord.id}`}>
-          Aconseja a un familiar
+          Practica cómo aconsejar a alguien
         </h2>
         {result ? (
           <span className="ai-panel__source">
@@ -76,9 +81,9 @@ export function AdvicePanel({ caseRecord }: AdvicePanelProps) {
       </div>
 
       <p className="text-sm text-muted">
-        Imagina que alguien de tu familia recibió este mensaje. Explícale en
-        pocas palabras qué señales ves y qué debería hacer. Esto no entra en tu
-        puntaje.
+        Imagina que alguien de tu familia recibió este mensaje. Gemini compara
+        tu consejo con las señales verificadas del caso y te ayuda a completarlo.
+        Esto no entra en tu puntaje.
       </p>
 
       <form onSubmit={submitAdvice} noValidate>
