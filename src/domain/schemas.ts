@@ -94,6 +94,7 @@ export const caseAnswerSchema = z
 
 export const coachRequestSchema = z
   .object({
+    adultConfirmed: z.literal(true),
     caseId: z.string().min(3).max(40),
     selectedSignals: signalMapSchema,
     selectedAction: actionSchema.nullable(),

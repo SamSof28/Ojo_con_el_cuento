@@ -52,10 +52,10 @@ export default function Home() {
       <section className="section" aria-labelledby="para-quien">
         <p className="section-kicker">Para quién es</p>
         <h2 className="section-title" id="para-quien">
-          Para jóvenes y adultos que reciben mensajes y llamadas en el celular.
+          Para personas adultas que reciben mensajes y llamadas en el celular.
         </h2>
         <p className="section-lead">
-          Personas de Antioquia que buscan empleo o que reciben ofertas y
+          Personas adultas de Antioquia que buscan empleo o reciben ofertas y
           emergencias por chat. Está pensada para celulares de gama media o baja,
           con datos limitados y sin experiencia técnica.
         </p>
@@ -143,28 +143,28 @@ export default function Home() {
       <section className="section" aria-labelledby="ia">
         <p className="section-kicker">Dónde entra la IA</p>
         <h2 className="section-title" id="ia">
-          La IA practica contigo, pero no te califica.
+          El coach de IA explica, pero nunca te califica.
         </h2>
         <div className="mt-5 grid gap-3 sm:grid-cols-3">
           <div className="card">
-            <h3 className="card-title">Simula</h3>
+            <h3 className="card-title">Coach Gemini</h3>
             <p className="text-sm text-muted">
-              Hace el papel de quien escribe o llama, siguiendo un caso revisado
-              y sin revelar la respuesta.
+              Explica tus aciertos y errores a partir de la verdad del caso y te
+              deja una pregunta para pensar.
             </p>
           </div>
           <div className="card">
-            <h3 className="card-title">Explica</h3>
+            <h3 className="card-title">Simulador con respaldo</h3>
             <p className="text-sm text-muted">
-              Te ayuda a ver qué señal se te pasó y qué pregunta hacerte. Sin
-              culpa y en lenguaje sencillo.
+              La conversación usa respuestas preparadas. La integración con IA
+              para simular personajes está pendiente.
             </p>
           </div>
           <div className="card">
-            <h3 className="card-title">Revisa tu consejo</h3>
+            <h3 className="card-title">Consejo con lista de chequeo</h3>
             <p className="text-sm text-muted">
-              Te dice qué señales PARE cubriste cuando le explicas el caso a un
-              familiar. Eso no entra en la nota.
+              Puedes comparar tu consejo con las señales del caso. La revisión
+              automática con IA está pendiente y esto no entra en la nota.
             </p>
           </div>
         </div>
@@ -172,7 +172,14 @@ export default function Home() {
           La nota del diagnóstico y de la prueba final la calcula código
           determinista con respuestas revisadas. Si la IA falla o se agota la
           cuota, la herramienta sigue con explicaciones preparadas y lo indica
-          en pantalla.
+          en pantalla. Por ahora, Gemini está conectado al coach; el simulador y
+          el consejo a un familiar conservan su respaldo preparado.
+        </p>
+        <p className="honest-note">
+          Al usar Gemini se envían a Google el caso ficticio y las señales y
+          decisión seleccionadas. En el nivel gratuito, Google puede usar las
+          solicitudes y respuestas para mejorar sus servicios. No escribas
+          información personal.
         </p>
       </section>
 

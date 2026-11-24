@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Atkinson_Hyperlegible, Fraunces } from "next/font/google";
 import type { ReactNode } from "react";
+import { AdultAccessGate } from "@/components/AdultAccessGate";
 import "./globals.css";
 
 const bodyFont = Atkinson_Hyperlegible({
@@ -54,7 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <a className="skip-link" href="#contenido">
             Saltar al contenido
           </a>
-          {children}
+          <AdultAccessGate>{children}</AdultAccessGate>
           <footer className="site-footer">
             <div className="site-footer__inner">
               <p>

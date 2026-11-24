@@ -128,6 +128,7 @@ describe("schemas de entrada de IA", () => {
   it("rechaza acciones desconocidas y campos extra", () => {
     expect(
       coachRequestSchema.safeParse({
+        adultConfirmed: true,
         caseId: "job-d1",
         selectedSignals: allFalse,
         selectedAction: "llamar",
@@ -135,10 +136,18 @@ describe("schemas de entrada de IA", () => {
     ).toBe(false);
     expect(
       coachRequestSchema.safeParse({
+        adultConfirmed: true,
         caseId: "job-d1",
         selectedSignals: allFalse,
         selectedAction: "cut",
         extra: true,
+      }).success,
+    ).toBe(false);
+    expect(
+      coachRequestSchema.safeParse({
+        caseId: "job-d1",
+        selectedSignals: allFalse,
+        selectedAction: "cut",
       }).success,
     ).toBe(false);
   });

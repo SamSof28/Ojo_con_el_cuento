@@ -37,9 +37,10 @@ describe("Home", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /La IA practica contigo, pero no te califica/,
+        name: /El coach de IA explica, pero nunca te califica/,
       }),
     ).toBeInTheDocument();
+    expect(screen.getByText(/Gemini está conectado al coach/)).toBeInTheDocument();
     expect(
       screen.getByText(/Todo es ficticio/, { selector: "strong" }),
     ).toBeInTheDocument();

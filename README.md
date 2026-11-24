@@ -2,7 +2,7 @@
 
 > Aprende a protegerte, y a proteger a los tuyos, de estafas por mensaje y por llamada.
 
-Herramienta web de aprendizaje con IA para el reto **Antioquia sin brechas** (Expl-AI-n 2026, Universidad de Medellín).
+Herramienta web de aprendizaje con IA para personas mayores de 18 años, para el reto **Antioquia sin brechas** (Expl-AI-n 2026, Universidad de Medellín).
 
 **Link de la herramienta:** _(pegar aquí la URL de Vercel)_
 
@@ -30,17 +30,16 @@ Ambas usan lo mismo: **piden plata, meten presión, no se pueden verificar y bus
 
 1. **Diagnóstico:** 5 casos sin ayuda, para saber de dónde parte.
 2. **Lección PARE:** 4 tarjetas cortas con una pregunta de comprobación cada una.
-3. **Práctica:** conversas con un falso reclutador o una falsa llamada (simulados por IA), marcas las señales y decides. Después **aconsejas a un familiar** que recibió el mensaje: explicar es una de las mejores formas de aprender.
+3. **Práctica:** conversas con un personaje usando respuestas preparadas, marcas las señales y decides. El coach Gemini te explica la respuesta; después puedes aconsejar a un familiar con una lista de chequeo.
 4. **Prueba final:** 5 casos nuevos, equivalentes a los del diagnóstico.
 5. **Resultado:** comparación antes y después **por cada letra de PARE**, y un plan de hábitos (por ejemplo, acordar una palabra clave familiar).
 
 ## Cómo enseña la IA (y qué no hace)
 
-- **Simula** al reclutador o a quien llama, siguiendo un guion de un caso revisado por el autor.
-- **Explica** los errores con lenguaje sencillo, usando solo las señales reales del caso.
-- **Revisa el consejo** que la persona le da a un familiar y le dice qué señales faltaron.
+- **Coach Gemini conectado:** explica la respuesta de práctica en lenguaje sencillo, usa la verdad del caso y hace una pregunta de reflexión.
+- **Simulador y consejo a un familiar:** ya tienen actividades y respaldos preparados, pero su integración con Gemini sigue pendiente (tareas T10 y T11).
 - **No califica.** La nota de diagnóstico y prueba final la calcula código determinista contra respuestas verificadas. Así la medición no depende de que la IA acierte.
-- **No inventa** empresas, teléfonos, enlaces ni leyes: todo es ficticio y la salida de la IA se valida antes de mostrarse.
+- La salida del coach se valida para limitar formato, extensión, señales ajenas al caso, URLs y posibles teléfonos. Esto reduce invenciones, pero ninguna IA garantiza cero errores; si falla la validación, se muestra el respaldo.
 - **Si la IA falla o se agota la cuota gratuita,** la herramienta sigue funcionando con explicaciones prediseñadas.
 
 ## Decisiones de diseño y calidad
@@ -74,13 +73,22 @@ Detalles en [`docs/03-arquitectura.md`](docs/03-arquitectura.md).
 
 ```bash
 npm install
-cp .env.example .env.local   # agrega tu GEMINI_API_KEY
+cp .env.example .env.local
+# agrega tu GEMINI_API_KEY en .env.local; nunca la compartas ni la subas a Git
 npm run dev
 npm test
 npm run build
 ```
 
 Sin `GEMINI_API_KEY` o con `AI_ENABLED=false`, la herramienta conserva el recorrido completo mediante contenidos y explicaciones de respaldo.
+
+El coach usa `@google/genai` desde la ruta del servidor. `GEMINI_MODEL` puede cambiar el modelo; por defecto usa `gemini-3.5-flash-lite`. La clave no se expone al navegador.
+
+Para Vercel, configura `GEMINI_API_KEY`, `GEMINI_MODEL` y `AI_ENABLED` en **Project → Settings → Environment Variables** y vuelve a desplegar. No envíes la clave ni credenciales por chat.
+
+La app solicita una declaración de mayoría de edad; no verifica identidad ni guarda fecha de nacimiento o confirmación. Gemini en nivel gratuito puede usar las solicitudes y respuestas para mejorar sus servicios, por eso solo se envía el caso ficticio y la selección de respuestas. No incluyas información personal.
+
+Referencias: [SDK oficial `@google/genai`](https://github.com/googleapis/js-genai), [salidas estructuradas](https://ai.google.dev/gemini-api/docs/structured-output), [modelo y precios](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) y [términos de datos](https://ai.google.dev/gemini-api/docs/terms).
 
 ## Despliegue
 

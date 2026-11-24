@@ -29,7 +29,12 @@ export function AiCoachPanel({
       const response = await fetch("/api/ai/coach", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ caseId, selectedSignals, selectedAction }),
+        body: JSON.stringify({
+          adultConfirmed: true,
+          caseId,
+          selectedSignals,
+          selectedAction,
+        }),
       });
 
       if (!response.ok) {
