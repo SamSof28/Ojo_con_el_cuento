@@ -158,8 +158,11 @@ export const adviceResponseSchema = adviceOutputSchema.extend({
 
 export type CoachRequest = z.infer<typeof coachRequestSchema>;
 export type CoachOutput = z.infer<typeof coachOutputSchema>;
+export type CoachResponse = z.infer<typeof coachResponseSchema>;
 export type RecruiterTurn = z.infer<typeof recruiterTurnSchema>;
 export type RecruiterRequest = z.infer<typeof recruiterRequestSchema>;
 export type RecruiterOutput = z.infer<typeof recruiterOutputSchema>;
+export type RecruiterResponse = z.infer<typeof recruiterResponseSchema>;
 export type AdviceRequest = z.infer<typeof adviceRequestSchema>;
 export type AdviceOutput = z.infer<typeof adviceOutputSchema>;
+export type AdviceResponse = z.infer<typeof adviceResponseSchema>;
